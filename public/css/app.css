@@ -1,0 +1,215 @@
+html {
+  font: 18px monospace;
+  color: black;
+}
+body {
+  overflow: hidden;
+}
+
+a {
+  color: black;
+  font-weight: bold;
+}
+a:focus {
+  outline-style: solid;
+  outline-color: #a80000;
+  outline-width: 3px;
+}
+
+p,
+li {
+  line-height: 1.8;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.options-nav {
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  flex-basis: 32px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ddd;
+  position: relative;
+  z-index: 1;
+}
+.nav-item {
+  padding-right: 4px;
+}
+.nav-item.fill {
+  flex-grow: 1;
+}
+.options-nav button,
+.options-nav .button {
+  white-space: nowrap;
+  margin-right: 4px;
+  display: block;
+}
+.filename {
+  white-space: nowrap;
+  font-size: 0.7rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  background: #555;
+  padding: 2px 4px;
+  font-style: italic;
+  z-index: 100;
+}
+.main {
+  flex-grow: 1;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.audio-container {
+  flex-grow: 1;
+  position: relative;
+}
+.waveform {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.audio-window {
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 0 100vw rgb(0 0 0 / 50%);
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-top: 0;
+  border-bottom: 0;
+}
+.audio-marker {
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 255, 55, 0.6);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.phones-container {
+  flex-grow: 1;
+  background: #333;
+  position: relative;
+}
+.words .word-wrapper {
+  position: absolute;
+  height: 100%;
+  display: none;
+}
+.words .word-wrapper.visible {
+  display: block;
+  opacity: 0.75;
+}
+.words .word-wrapper.active {
+  opacity: 1;
+}
+.words .word {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  text-align: center;
+}
+.word .word-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.words .phones {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+}
+.phones .phone {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  text-align: center;
+  display: block;
+}
+.phone .phone-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.phone .phone-start {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+.words .word-wrapper.active .phone .phone-start,
+.words .word-wrapper.active + .word-wrapper .phone:first-child .phone-start {
+  display: block;
+}
+.transcript-container {
+  height: 60px;
+  line-height: 60px;
+  flex-basis: 60px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding: 0 6px;
+  overflow: hidden;
+  overflow-x: auto;
+  position: relative;
+}
+.transcript {
+  white-space: nowrap;
+  display: flex;
+}
+.transcript .word {
+  margin: 8px 8px 0 0;
+  display: inline-block;
+}
+.transcript .word.selected {
+  background: #333;
+  color: white;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
